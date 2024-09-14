@@ -1,0 +1,23 @@
+{
+    "name": "volume-bot",
+    "version": "1.0.0",
+    "description": "",
+    "main": "bot/main.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "bot": "nodemon ./bot/main.js"
+    },
+    "keywords": [
+        "volume-bot",
+        "solidity",
+        "aave-v3",
+        "aave-flash-loan",
+        "uniswap-v2"
+    ],
+    "author": "mgnfy-view",
+    "license": "MIT",
+    "devDependencies": {
+        "dotenv": "^16.4.5",
+        "nodemon": "^3.1.4"
+    }
+}
