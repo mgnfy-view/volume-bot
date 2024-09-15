@@ -2,5 +2,15 @@
 src = "src"
 out = "out"
 libs = ["lib"]
+remappings = ["@aave=lib/aave-v3-core", "@openzeppelin=lib/openzeppelin-contracts", "@uniswap-v2=lib/v2-periphery"]
+
+[fmt]
+sort_imports = true
+bracket_spacing = true
+int_types = "long"
+line_length = 100
+multiline_func_header = "all"
+quote_style = "double"
+tab_width = 4
 
 # See more config options https://github.com/foundry-rs/foundry/blob/master/crates/config/README.md#all-options
