@@ -30,6 +30,13 @@ import { SafeERC20 } from "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.s
 import { FlashLoanSimpleReceiverBase } from
     "aave-v3-core/contracts/flashloan/base/FlashLoanSimpleReceiverBase.sol";
 
+/**
+ * @title FlashLoaner.
+ * @author mgnfy-view.
+ * @notice This contract can be used by any volume booster bot to increase the trading volume
+ * of a token pair on Uniswap. It flash borrows WETH from Aave, uses it to buy tokens on Uniswap,
+ * and sells those tokens in the same transaction to get back WETH and pay back the loan.
+ */
 contract FlashLoaner is FlashLoanSimpleReceiverBase {
     using SafeERC20 for IERC20;
 
@@ -94,6 +101,17 @@ contract FlashLoaner is FlashLoanSimpleReceiverBase {
         if (!success) revert FlashLoaner__TransferFailed();
     }
 
+    /**
+     * @notice This is the callback function called by Aave after it has transferred the flashloan
+     * amount to our contract. The logic to increase the volume of a token pair is handled here.
+     * @param _asset The flash loaned asset. In our case, it's always WETH.
+     * @param _amount The flash loan amount.
+     * @param _premium The total fee to be paid for the flash loan.
+     * @param _initiator The address that initiated the flash loan. In our case, it should be this
+     * contract itself.
+     * @param _params Any encoded params passed by the initiator of the flash loan.
+     * @return A boolean indicating if the flash loan was successful or not.
+     */
     function executeOperation(
         address _asset,
         uint256 _amount,
