@@ -13,7 +13,7 @@
     <img src="assets/icon.svg" alt="Logo" width="80" height="80">
   </a> -->
 
-  <h3 align="center">Soul Streams</h3>
+  <h3 align="center">Volume Bot</h3>
 
   <p align="center">
     A volume bot to boost the trading volume of any token on Uniswap V2
