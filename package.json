@@ -3,9 +3,11 @@
     "version": "1.0.0",
     "description": "",
     "main": "bot/main.js",
+    "type": "module",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "bot": "nodemon ./bot/main.js"
+        "dev": "nodemon ./bot/main.js",
+        "bot": "node ./bot/main.js"
     },
     "keywords": [
         "volume-bot",
@@ -19,6 +21,8 @@
     "devDependencies": {
         "dotenv": "^16.4.5",
         "ethers": "^6.13.2",
-        "nodemon": "^3.1.4"
+        "nodemon": "^3.1.4",
+        "random-float": "^3.0.0",
+        "random-int": "^3.0.0"
     }
 }
