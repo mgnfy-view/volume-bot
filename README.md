@@ -16,7 +16,7 @@
   <h3 align="center">Soul Streams</h3>
 
   <p align="center">
-    This implementation of the volume bot allows you to boost the volume of any token pair on Uniswap V2
+    A volume bot to boost the trading volume of any token on Uniswap V2
     <br />
     <a href="https://github.com/mgnfy-view/volume-bot/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
     ·
@@ -52,7 +52,7 @@
 
 ## About The Project
 
-This volume booster bot allows you to flash loan Eth from Aave V3, and use it to buy and sell a token on Uniswap V2 (while keeping a small amount of the token) all in a single transaction. The flash loan feature allows you to boost the volume by a large margin and a small capital (which will be used to pay fees only).
+This volume booster bot allows you to flash loan Eth from Aave V3, and use it to buy and sell a token on Uniswap V2 (while keeping a small amount of the token) all in a single transaction. The flash loan feature enables you to boost the volume by a large margin and a small capital (which will be used to pay fees only).
 
 ### Built With
 
