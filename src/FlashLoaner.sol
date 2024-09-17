@@ -40,13 +40,12 @@ import { FlashLoanSimpleReceiverBase } from
 contract FlashLoaner is FlashLoanSimpleReceiverBase {
     using SafeERC20 for IERC20;
 
-    uint256 public constant HOLD_PERCENTAGE = 100;
+    uint256 public constant HOLD_PERCENTAGE = 1; // 0.01%
     uint256 private constant BPS = 10_000;
 
     address private immutable i_weth;
     address private immutable i_uniswapRouter02;
 
-    error FlashLoaner__InsufficientEthProvided();
     error FlashLoaner__TransferFailed();
     error FlashLoaner__UnsupportedToken(address token);
     error FlashLoaner__InvalidInitiator(address initiator);
@@ -79,8 +78,6 @@ contract FlashLoaner is FlashLoanSimpleReceiverBase {
         public
         payable
     {
-        if (msg.value <= _amount) revert FlashLoaner__InsufficientEthProvided();
-
         // Convert raw ETH to WETH
         // msg.value is used here so that a surplus amount of ETH can be converted to WETH
         // This will allow us to pay the fee for the flash loan and the swaps
