@@ -32,7 +32,7 @@ contract FlashLoanerTest is Test {
     }
 
     function test_checkInitialization() public view {
-        uint256 expectedHoldPercentage = 100; // In bips
+        uint256 expectedHoldPercentage = 1; // In bips
 
         assertEq(flashLoaner.getWETH(), WETH_MAINNET);
         assertEq(flashLoaner.getUniswapV2Router02(), UNISWAP_ROUTER_02_MAINNET);
@@ -41,15 +41,13 @@ contract FlashLoanerTest is Test {
 
     function test_flashLoan() public {
         uint256 amount = 1 ether;
-        uint256 surplus = 0.5 ether;
-        vm.deal(USER, amount + surplus);
+        uint256 buffer = 0.5 ether;
+        vm.deal(USER, buffer);
 
         uint256 userEthBalanceBefore = USER.balance;
 
         vm.startPrank(USER);
-        flashLoaner.initiateFlashLoan{ value: amount + surplus }(
-            amount, USDC, 0, block.timestamp + 1 minutes
-        );
+        flashLoaner.initiateFlashLoan{ value: buffer }(amount, USDC, 0, block.timestamp + 1 minutes);
         vm.stopPrank();
 
         uint256 userEthBalanceAfter = USER.balance;
@@ -57,10 +55,9 @@ contract FlashLoanerTest is Test {
         uint256 contractEthBalanceAfter = address(flashLoaner).balance;
         uint256 contractWethBalanceAfter = IERC20(flashLoaner.getWETH()).balanceOf(USER);
 
-        console.log("User's USDC balance: ", userUSDCBalanceAfter);
-        console.log("User's ETH balance before: ", userEthBalanceBefore);
-        console.log("User's ETH balance after: ", userEthBalanceAfter);
-        console.log("Contract's raw ETH balance: ", contractEthBalanceAfter);
-        console.log("Contract's WETH balance: ", contractWethBalanceAfter);
+        assertGt(userEthBalanceBefore - userEthBalanceAfter, 0);
+        assertGt(userUSDCBalanceAfter, 0);
+        assertEq(contractEthBalanceAfter, 0);
+        assertEq(contractWethBalanceAfter, 0);
     }
 }
