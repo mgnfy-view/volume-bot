@@ -69,7 +69,7 @@ This volume booster bot allows you to flash loan Eth from Aave V3, and use it to
 
 ### Prerequisites
 
-Make sure you have rust, solana-cli, anchor, git, node.js, and yarn installed and configured on your system.
+Make sure you have git, node.js, pnpm, rust, foundry, and make installed and configured on your system.
 
 ### Installation
 
