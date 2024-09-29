@@ -87,13 +87,13 @@ pnpm install
 forge build
 ```
 
+Start by filling out the .env.example file, and rename it to .env. Use `export ENVIRONMENT="dev"` for local testing, or `export ENVIRONMENT="production"` for going live on Eth mainnet. Add your private keys separated by a space as follows: `export PRIVATE_KEYS="<P1> <P2> <P3>"`.
+
 Load your terminal with the environment variables in your `.env` file using
 
 ```shell
 source .env
 ```
-
-Start by filling out the .env.example file, and rename it to .env. Use `export ENVIRONMENT="dev"` for local testing, or `export ENVIRONMENT="production"` for going live on Eth mainnet. Add your private keys separated by a space as follows: `export PRIVATE_KEYS="<P1> <P2> <P3>"`.
 
 Run tests by
 
